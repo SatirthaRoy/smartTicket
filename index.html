@@ -9,10 +9,146 @@
   <!-- daisy ui -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <style>
+    .inter {
+      font-family: "Inter", sans-serif;
+    }
+    .raleway {
+      font-family: "Raleway", sans-serif;
+    }
+  </style>
+
 </head>
 <body>
-  
+  <!-- header -->
+  <header class="lg:w-5/6 mx-auto raleway mt-5">
+    <!-- navigation -->
+    <nav>
+      <div class="navbar bg-base-100">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </div>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              <li class="text-lg text-[#030712B2] font-medium"><a>Home</a></li>
+              <li class="text-lg text-[#030712B2] font-medium"><a>About</a></li>
+              <li class="text-lg text-[#030712B2] font-medium"><a>Destination</a></li>
+              <li class="text-lg text-[#030712B2] font-medium"><a>Search</a></li>
+            </ul>
+          </div>
+          <a class="btn btn-ghost font-extrabold text-3xl text-[#030712]">P-Ticket</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1 space-x-14">
+            <li class="text-lg text-[#030712B2] font-medium"><a>Home</a></li>
+            <li class="text-lg text-[#030712B2] font-medium">
+              <summary>About</summary>
+            </li>
+            <li class="text-lg text-[#030712B2] font-medium"><a>Destination</a></li>
+            <li class="text-lg text-[#030712B2] font-medium"><a>Search</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end text-xl font-bold">
+          <a class="btn bg-[#1DD1001A] border-[#1DD10066] text-[#1DD100]">Bus <img src="images/bus-icon.png" alt=""></a>
+        </div>
+      </div>
+    </nav>
 
-  <script src="index.js"></script>
+    <!-- banner section -->
+    <section class="mt-7 flex flex-col justify-center items-center relative">
+      <div class="flex flex-col justify-center items-center gap-11 bg-[url('./images/banner.png')] bg-no-repeat bg-cover bg-center h-[650px] w-full rounded-[32px]">
+        <div class="text-4xl lg:text-6xl font-extrabold text-white text-center">End-to-End Travel with <br><span class="text-[#1DD100]">P Paribahan</span></div>
+        <p class="text-center inter font-normal text-base lg:text-lg text-white max-w-2xl">Welcome to P Paribahan, your ultimate destination for hassle-free bus ticket booking! Whether you're planning a weekend getaway or a daily commute, we've got you covered with a wide range of routes, convenient schedules, and secure online booking. Experience the ease of travel with us!</p>
+        <button class="font-bold text-xl text-[#030712] py-5 px-7 bg-[#1DD100] rounded-xl">Buy Tickets</button>  
+      </div>
+      
+
+
+      <!-- stats -->
+      <div class="bg-transparent flex gap-6 flex-wrap lg:flex-nowrap lg:absolute lg:-bottom-16">
+  
+        <div class="stat bg-white rounded-3xl flex items-center inter p-8 border-b-4 border-[#1DD100]">
+          <div class="stat-title w-16"><img src="images/people.png" alt=""></div>
+          <div>
+            <h3 class="text-3xl font-bold text-[#030712]">500k+</h3>
+            <p class="w-32 text-base font-normal text-[#03071299]">Registered users</p>
+          </div>
+        </div>
+
+        <div class="stat bg-white rounded-3xl flex items-center inter p-8 border-b-4 border-[#1DD100]">
+          <div class="stat-title w-16"><img src="images/ticket-cupon.png" alt=""></div>
+          <div>
+            <h3 class="text-3xl font-bold text-[#030712]">1.7 lacks</h3>
+            <p class="w-32 text-base font-normal text-[#03071299]">Tickets sold</p>
+          </div>
+        </div>
+
+        <div class="stat bg-white rounded-3xl flex items-center inter p-8 border-b-4 border-[#1DD100]">
+          <div class="stat-title w-16"><img src="images/stoppage.png" alt=""></div>
+          <div>
+            <h3 class="text-3xl font-bold text-[#030712]">80K+</h3>
+            <p class="w-32 text-base font-normal text-[#03071299]">Rental partners</p>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+  </header>
+  <!-- main -->
+  <main class="lg:w-5/6 mx-auto lg:mt-14">
+    <!-- offer section -->
+    <section class="mt-36 space-y-12">
+      <h1 class="text-4xl font-bold text-[#030712] text-center">Best offers for you</h1>
+
+      <!-- cupons -->
+      <div class="flex flex-wrap gap-6">
+        <!-- new cupon -->
+        <div class="flex-1 flex bg-[#FFBF0F] justify-between items-center px-12 rounded-3xl w-[220px]">
+          <div class="inter space-y-2">
+            <h2 class="text-2xl md:text-4xl font-extrabold text-[#030712CC]">15% OFF</h2>
+            <h5 class="text-[#030712CC] font-semibold text-xs md:text-xl">on your next purchase</h5>
+            <h6 class="text-[#03071280] font-medium text-xs md:text-base">use by January 2024</h6>
+          </div>
+          <img src="./images/divider.svg" alt="">
+          <!-- cupon -->
+          <div class="raleway space-y-2">
+          <h3 class="text-[#030712] text-xl md:text-3xl font-bold">NEW15</h3>
+          <span class="text-[#03071266] text-xs md:text-base font-medium">Coupon Code</span>
+          </div>
+        </div>
+        
+        <!-- couple cupon -->
+        <div class="flex-1 flex bg-[#F78C9C] justify-between items-center px-12 rounded-3xl w-[220px]">
+          <div class="inter space-y-2">
+            <h2 class="text-2xl md:text-4xl font-extrabold text-[#030712CC]">20% OFF</h2>
+            <h5 class="text-[#030712CC] font-semibold text-xs md:text-xl">on your next purchase</h5>
+            <h6 class="text-[#03071280] font-medium text-xs md:text-base">use by January 2024</h6>
+          </div>
+          <img src="./images/divider.svg" alt="" class="h-full">
+          <!-- cupon -->
+          <div class="raleway space-y-2">
+          <h3 class="text-[#030712] text-xl md:text-3xl font-bold">Couple 20</h3>
+          <span class="text-[#03071266] text-xs md:text-base font-medium">Coupon Code</span>
+          </div>
+        </div>
+      </div>
+      <!-- see all offers button -->
+      <button class="text-[#1DD100] text-xl font-bold block mx-auto border border-[#1DD100] rounded-lg px-7 py-5">See All Offers</button>
+    </section>
+
+  </main>
+  <!-- footer -->
+  <footer>
+
+  </footer>
+
+<script src="index.js"></script>
 </body>
 </html>
