@@ -9,7 +9,7 @@ seat2.innerHTML = `<div class="col-end-4"></div>`;
 
 seatLetters.forEach(letter => {
   seat2.innerHTML += `
-  <button class="py-5 text-center">${letter}</button>
+  <div class="py-5 text-center">${letter}</div>
   <button class="seat font-medium text-lg text-[#03071280] bg-[#F7F8F8] px-5 py-3 lg:px-10 lg:py-5 rounded-xl cursor-pointer" id="${letter}1">${letter}1</button>
   <button class="seat font-medium text-lg text-[#03071280] bg-[#F7F8F8] px-5 py-3 lg:px-10 lg:py-5 rounded-xl cursor-pointer" id="${letter}2">${letter}2</button>
   `
