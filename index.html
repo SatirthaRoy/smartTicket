@@ -64,8 +64,8 @@
     <section class="mt-7 flex flex-col justify-center items-center relative">
       <div class="flex flex-col justify-center items-center gap-11 bg-[url('./images/banner.png')] bg-no-repeat bg-cover bg-center h-[650px] w-full rounded-[32px]">
         <div class="text-4xl lg:text-6xl font-extrabold text-white text-center">End-to-End Travel with <br><span class="text-[#1DD100]">P Paribahan</span></div>
-        <p class="text-center inter font-normal text-base lg:text-lg text-white max-w-2xl">Welcome to P Paribahan, your ultimate destination for hassle-free bus ticket booking! Whether you're planning a weekend getaway or a daily commute, we've got you covered with a wide range of routes, convenient schedules, and secure online booking. Experience the ease of travel with us!</p>
-        <button class="font-bold text-xl text-[#030712] py-5 px-7 bg-[#1DD100] rounded-xl">Buy Tickets</button>  
+        <p class="text-center inter font-normal text-base lg:text-lg text-white max-w-2xl">Welcome to P Paribahan, your ultimate destination for hassle-free bus ticket booking! Whether you're planning a weekend getaway or a daily commute!</p>
+        <button onclick="scrollToTickets()" class="font-bold text-xl text-[#030712] py-5 px-7 bg-[#1DD100] rounded-xl">Buy Tickets</button>  
       </div>
       
 
@@ -144,7 +144,7 @@
     </section>
     
     <!-- ticket section -->
-    <section class="bg-[#F7F8F8] border-t-2 border-[#1DD100] rounded-t-[88px] mt-16 space-y-8">
+    <section id="tickets" class="bg-[#F7F8F8] border-t-2 border-[#1DD100] rounded-t-[88px] mt-16 space-y-8">
       <h1 class="text-[#030712] font-bold text-4xl text-center my-10">P.H Paribahan</h1>
       <p class="text-[#03071299] text-lg font-normal text-center">Yes, you can run unit tests and view the results directly within the app. The integrated testing features allow for a streamlined .</p>
 
@@ -168,7 +168,7 @@
               <!-- counts of seat -->
               <div class="bg-[#1DD10026] rounded-xl text-[#1DD100] text-lg font-medium flex gap-1 p-3 inter">
                 <img src="./images/seat-green.png" alt="">
-                <span class="left-seats">40</span> Seats left
+                <span id="left-seats" class="left-seats">40</span> Seats left
               </div>
             </div>
 
@@ -204,9 +204,9 @@
         </div>
 
         <!-- functional tickets -->
-        <div class="md:p-6 bg-white rounded-3xl flex flex-col md:flex-row justify-between">
+        <div class="md:p-6 bg-white rounded-3xl flex flex-col lg:flex-row justify-between">
           <!-- tickets -->
-          <div class="flex-1 lg:w-4/6 space-y-6">
+          <div class=" space-y-6">
             <div class="p-6 border-dashed border-[#03071233] border-b">
               <h3 class="text-[#030712] font-semibold text-2xl">Select Your Seat</h3>
             </div>
@@ -233,7 +233,7 @@
           <div class="divider lg:divider-horizontal"></div>
 
           <!-- tickets prices cupon and user detail -->
-          <div class="lg:w-1/3 space-y-6">
+          <div class=" space-y-6">
             <div class="p-6 border-dashed border-[#03071233] border-b">
               <h3 class="text-[#030712] font-semibold text-2xl">Select Your Seat</h3>
             </div>
@@ -245,35 +245,26 @@
               <div class="bg-[#F7F8F8] rounded-xl p-8 space-y-6">
                 <table>
                   <colgroup>
-                    <!-- <col style="width: 20%">
-                    <col style="width: 20%">
-                    <col style="width: 20%"> -->
+                    <!-- <col style="width: 500px">
+                    <col style="width: 500px">
+                    <col style="width: 500px"> -->
                     </colgroup>
                   <thead>
                     <tr class="border-b border-dashed border-[#03071233]">
-                      <th class="p-4 text-[#030712] text-base font-medium">Seat <span class="bg-[#1DD100]  text-white text-xs font-bold px-2 rounded-lg">2</span></th>
+                      <th class="p-4 text-[#030712] text-base font-medium">Seat <span id="seat-count" class="bg-[#1DD100]  text-white text-xs font-bold px-2 rounded-lg">0</span></th>
                       <th class="p-4 text-[#030712] text-base font-medium">class</th>
                       <th class="p-4 text-[#030712] text-base font-medium">price</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th class="p-4 text-[#03071299] text-base font-normal">C2</th>
-                      <th class="p-4 text-[#03071299] text-base font-normal">Economy</th>
-                      <th class="p-4 text-[#03071299] text-base font-normal">550</th>
-                    </tr>
-                    <tr>
-                      <th class="p-4 text-[#03071299] text-base font-normal">C2</th>
-                      <th class="p-4 text-[#03071299] text-base font-normal">Economy</th>
-                      <th class="p-4 text-[#03071299] text-base font-normal">550</th>
-                    </tr>
+                    
                   </tbody>
                 </table>
                 <hr class="border border-[#03071233]">
                 <!-- total price -->
                 <div class="flex justify-between *:text-[#030712] *:font-medium *:text-base">
                   <h3>Total Price</h3>
-                  <h3>BDT 1100</h3>
+                  <h3>BDT <span id="total-price">0</span></h3>
                 </div>
                 <!-- cupon input -->
                 <div>
@@ -283,7 +274,7 @@
                 <!-- grand total -->
                 <div class="flex justify-between *:text-[#030712] *:font-medium *:text-base">
                   <h3>Grand Price</h3>
-                  <h3>BDT 1100</h3>
+                  <h3>BDT <span id="grand-price">0</span></h3>
                 </div>
               </div>
 
@@ -296,14 +287,14 @@
                   </label>
                   <label for="number" class="flex flex-col justify-stretch text-[#030712] font-semibold text-base space-y-4">
                     Phone Number* <br>
-                    <input type="number" placeholder="Enter your phone number" class="border border-[#0307121A] text-sm font-normal text-[#03071266] p-5 rounded-xl">
+                    <input id="phone" type="number" onchange="makeSubmitDisable()" placeholder="Enter your phone number" class="border border-[#0307121A] text-sm font-normal text-[#03071266] p-5 rounded-xl">
                   </label>
                   <label for="name" class="flex flex-col justify-stretch text-[#030712] font-semibold text-base space-y-4">
-                    Email ID* <br>
+                    Email ID <br>
                     <input type="email" placeholder="Enter your email id" class="border border-[#0307121A] text-sm font-normal text-[#03071266] p-5 rounded-xl">
                   </label>
                   <label for="name" class="flex flex-col justify-stretch text-[#030712] font-semibold text-base space-y-4">
-                    <input type="submit" value="Next" class="bg-[#1DD100] text-white font-extrabold text-xl py-5 rounded-xl">
+                    <button id="submit-button" class="bg-[#1DD100] text-white font-extrabold text-xl py-5 rounded-xl">Next</button>
                   </label>
                 </form>
               </div>
