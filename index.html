@@ -206,7 +206,7 @@
         <!-- functional tickets -->
         <div class="md:p-6 bg-white rounded-3xl flex flex-col lg:flex-row justify-between">
           <!-- tickets -->
-          <div class=" space-y-6">
+          <div class="md:w-[60%] space-y-6">
             <div class="p-6 border-dashed border-[#03071233] border-b">
               <h3 class="text-[#030712] font-semibold text-2xl">Select Your Seat</h3>
             </div>
@@ -262,14 +262,24 @@
                 </table>
                 <hr class="border border-[#03071233]">
                 <!-- total price -->
-                <div class="flex justify-between *:text-[#030712] *:font-medium *:text-base">
-                  <h3>Total Price</h3>
-                  <h3>BDT <span id="total-price">0</span></h3>
+                <div>
+                  <div class="flex justify-between *:text-[#030712] *:font-medium *:text-base">
+                    <h3>Total Price</h3>
+                    <h3>BDT <span id="total-price">0</span></h3>
+                  </div>
+                  <div id="discount" class="hidden justify-between *:text-[#030712] *:font-medium *:text-base">
+                    <h3>Discount Price</h3>
+                    <h3>BDT <span id="discount-price">0</span></h3>
+                  </div>
                 </div>
+                
                 <!-- cupon input -->
                 <div>
-                  <input type="text" placeholder="Have any copupon?" class="text-sm font-normal text-[#03071266] p-5 rounded-xl">
-                  <button class="bg-[#1DD100] rounded-lg text-base font-semibold text-white px-5 py-3">Apply</button>
+                  <div>
+                    <input id="cupon" type="text" placeholder="Have any copupon?" class="text-sm font-normal text-[#03071266] p-5 rounded-xl">
+                    <button id="cupon-button" class="bg-[#1DD100] rounded-lg text-base font-semibold text-white px-5 py-3">Apply</button>
+                  </div>
+                  <small id="invalid" class="pl-3 text-xs text-red-500 font-normal inter hidden">Invalid cupon</small>
                 </div>
                 <!-- grand total -->
                 <div class="flex justify-between *:text-[#030712] *:font-medium *:text-base">

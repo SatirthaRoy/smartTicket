@@ -4,7 +4,7 @@ const seatLetters = 'ABCDEFGHIJ'.split('');
 
 const seat2 = document.querySelector('.seat-seat2');
 const seat4 = document.querySelector('.seat4');
-seat4.innerHTML = `<div class="col-start-2 bg-[#F7F8F8] px-5 py-3 lg:px-10 lg:py-5 rounded-xl"><img src="./images/driver seat.svg" alt=""></div>`;
+seat4.innerHTML = `<div class="col-start-2 bg-[#0307121A] px-5 py-3 lg:px-10 lg:py-5 rounded-xl"><img src="./images/driver seat.svg" alt=""></div>`;
 seat2.innerHTML = `<div class="col-end-4"></div>`;
 
 seatLetters.forEach(letter => {
@@ -39,6 +39,13 @@ let ticketsArr = [];
 const seats = document.querySelectorAll('.seat');
 const seatCount = document.querySelector('#seat-count');
 const leftSeats = document.querySelector('#left-seats');
+const cuponButton = document.querySelector('#cupon-button');
+const submitButt = document.querySelector('#submit-button');
+// cupons
+const cuponsArr = ['NEW15', 'Couple 20'];
+
+let cuponSuccess = false;
+let discount = 0;
 
 
 // toogles color
@@ -57,7 +64,6 @@ function prevD (e) {
 // update seat table
 function updateSeatTable () {
   const tBody = document.querySelector('tBody');
-  console.log(tBody.innerHTML);
   tBody.innerHTML = '';
   ticketsArr.forEach(ticket => {
     tBody.innerHTML += `
@@ -81,14 +87,16 @@ function totalPrice () {
 function grandPrice () {
   const totalPrice = document.querySelector('#grand-price');
   totalPrice.innerText = 0;
-  totalPrice.innerText = ticketsArr.length * 550;
+  if(cuponSuccess) {
+    totalPrice.innerText = ticketsArr.length * 550 - ticketsArr.length * 550 * discount;
+  } else {
+    totalPrice.innerText = ticketsArr.length * 550;
+  }
 }
 
 // disable submit button 
 function makeSubmitDisable () {
-  const submitButt = document.querySelector('#submit-button');
   const phoneNumber = document.querySelector('#phone');
-  console.log(phoneNumber.value === '');
   submitButt.disabled = (ticketsArr.length !== 0 && phoneNumber.value !== '') ? false : true;
   if(submitButt.disabled == true) {
     submitButt.classList.remove('bg-[#1DD100]');
@@ -99,8 +107,21 @@ function makeSubmitDisable () {
   }
 }
 
+// make cupon button disabled
+function makeCuponDisabled () {
+  cuponButton.disabled = ticketsArr.length !== 4;
+  if(cuponButton.disabled) {
+    cuponButton.classList.remove('bg-[#1DD100]');
+    cuponButton.classList.add('bg-gray-300');
+  } else {
+    cuponButton.classList.add('bg-[#1DD100]');
+    cuponButton.classList.remove('bg-gray-300');
+  }
+}
+
 // run on first render
 makeSubmitDisable();
+makeCuponDisabled();
 
 // on click seats
 seats.forEach(seat => {
@@ -117,11 +138,71 @@ seats.forEach(seat => {
     }
     seatCount.innerText = ticketsArr.length;
     leftSeats.innerText = 40-ticketsArr.length;
+    showDis();
     updateSeatTable();
     totalPrice();
     grandPrice();
+    makeCuponDisabled();
     makeSubmitDisable();
     console.log(ticketsArr);
   })
 })
 
+// on cupon button click
+
+// show hide invalid
+function showInvalid () {
+  const invalid = document.querySelector('#invalid');
+  if(!cuponSuccess) {
+    invalid.classList.remove('hidden');
+  } else {
+    invalid.classList.add('hidden');
+  }
+}
+
+// show hide discount
+function showDis () {
+  if(ticketsArr.length !== 4) {
+    cuponSuccess = false;
+  }
+  const discountDiv = document.querySelector('#discount');
+  const discountPrice = document.querySelector('#discount-price');
+  if(cuponSuccess) {
+    discountDiv.classList.remove('hidden');
+    discountDiv.classList.add('flex');
+    discountPrice.innerText = ticketsArr.length * 550 * discount;
+  } else {
+    discountDiv.classList.add('hidden');
+    discountDiv.classList.remove('flex');
+  }
+}
+
+// handle discount
+function handleDis () {
+  const cuponText = document.querySelector('#cupon').value;
+  
+  if(ticketsArr.length === 4) {
+    if(cuponsArr.includes(cuponText)) {
+      cuponSuccess = true;
+      if(cuponText === 'NEW15') {
+        discount = 0.15;
+      } else {
+        discount = 0.20;
+      }
+      showDis();
+      showInvalid();
+    } else {
+      cuponSuccess = false;
+      showInvalid();
+    }
+  } else {
+    cuponSuccess = false;
+    showDis();
+  }
+
+  grandPrice();
+}
+
+cuponButton.addEventListener('click', ()=> {
+  handleDis();
+})
