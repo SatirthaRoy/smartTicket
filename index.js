@@ -139,6 +139,7 @@ seats.forEach(seat => {
     seatCount.innerText = ticketsArr.length;
     leftSeats.innerText = 40-ticketsArr.length;
     showDis();
+    hideCup();
     updateSeatTable();
     totalPrice();
     grandPrice();
@@ -177,6 +178,17 @@ function showDis () {
   }
 }
 
+
+// hide cupon
+function hideCup () {
+  const cuponArea = document.querySelector('#cupon-area');
+  if(cuponSuccess) {
+    cuponArea.classList.add('hidden');
+  } else {
+    cuponArea.classList.remove('hidden');
+  }
+}
+
 // handle discount
 function handleDis () {
   const cuponText = document.querySelector('#cupon').value;
@@ -191,6 +203,7 @@ function handleDis () {
       }
       showDis();
       showInvalid();
+      hideCup();
     } else {
       cuponSuccess = false;
       showInvalid();
@@ -198,6 +211,7 @@ function handleDis () {
   } else {
     cuponSuccess = false;
     showDis();
+    hideCup();
   }
 
   grandPrice();
